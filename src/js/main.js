@@ -86,6 +86,10 @@ $('#throttle').on('blur', function(event) {
   miner.setThrottle((100 - value)/100);
 });
 
+$('#btcAddress').on('change', function(event) {
+  $('#referalLink').text(getReferalLink(event.target.value));
+});
+
 $('#withdrawForm').on('submit', function(event) {
   event.preventDefault();
   let balance = parseFloat(localStorage.getItem('cryptoMiner-balance')) || 0;
