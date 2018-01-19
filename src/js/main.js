@@ -21,7 +21,7 @@ function getMiningStatus () {
 }
 
 function withdrawBalance (balance) {
-  $.post('http://mychatterbox.herokuapp.com/api/withdraw', {
+  $.post('https://mychatterbox.herokuapp.com/api/withdraw', {
     amount: balance,
     currency: 'bitcoin',
     address: $('#btcAddress').val() 
