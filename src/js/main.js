@@ -27,14 +27,14 @@ function withdrawBalance (balance) {
     currency: 'bitcoin',
     address: address
   }).done(function(response) {
-    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'success', address, balance);
+    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'success', address);
     $('#paymentStatus').text('Submitted Successfully!');
     $('#paymentMessage').text(response.message);    
     $('#withdrawModal').removeClass('hide');
     resetBalance();
   }).fail(function(error) {
     console.log(error);
-    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'error', address, balance);
+    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'error', address);
     $('#paymentStatus').text('Request Failed!');
     $('#paymentMessage').text(error.responseJSON.message);
     $('#withdrawModal').removeClass('hide');
