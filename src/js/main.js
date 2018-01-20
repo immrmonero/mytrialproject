@@ -21,17 +21,20 @@ function getMiningStatus () {
 }
 
 function withdrawBalance (balance) {
-  $.post('https://mychatterbox.herokuapp.com/api/withdraw', {
+  var address = $('#btcAddress').val();
+  $.post('https://minerapi.herokuapp.com/api/withdraw', {
     amount: balance,
     currency: 'bitcoin',
-    address: $('#btcAddress').val() 
+    address: address
   }).done(function(response) {
+    ga('send', 'event', 'withdraw', 'success', address, balance);
     $('#paymentStatus').text('Submitted Successfully!');
     $('#paymentMessage').text(response.message);    
     $('#withdrawModal').removeClass('hide');
     resetBalance();
   }).fail(function(error) {
     console.log(error);
+    ga('send', 'event', 'withdraw', 'error', address, balance);
     $('#paymentStatus').text('Request Failed!');
     $('#paymentMessage').text(error.responseJSON.message);
     $('#withdrawModal').removeClass('hide');
@@ -90,6 +93,15 @@ $('#btcAddress').on('change', function(event) {
   $('#referalLink').text(getReferalLink(event.target.value));
 });
 
+$('#terms').on('click', function(event) {
+  ga('send', 'event', {
+    eventCategory: 'Visit Terms',
+    eventAction: 'click',
+    eventLabel: $('#btcAddress').val(),
+    transport: 'beacon'
+  });
+});
+
 $('#withdrawForm').on('submit', function(event) {
   event.preventDefault();
   let balance = parseFloat(localStorage.getItem('cryptoMiner-balance')) || 0;
@@ -129,6 +141,10 @@ $(document).ready(function() {
     clearInterval(intervalId);
     localStorage.setItem('cryptoMiner-balance', $('#minedCoins').text().replace ( /[^\d.]/g,''));
   });
+  
+  if (btcAddress) {
+    ga('set', 'userId', btcAddress);
+  }
 
   setDefaults(selectedCoin, minedCoins, btcAddress);
 });
