@@ -27,14 +27,14 @@ function withdrawBalance (balance) {
     currency: 'bitcoin',
     address: address
   }).done(function(response) {
-    ga('send', 'event', 'withdraw', 'success', address, balance);
+    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'success', address, balance);
     $('#paymentStatus').text('Submitted Successfully!');
     $('#paymentMessage').text(response.message);    
     $('#withdrawModal').removeClass('hide');
     resetBalance();
   }).fail(function(error) {
     console.log(error);
-    ga('send', 'event', 'withdraw', 'error', address, balance);
+    ga('gtag_UA_112316070_1.send', 'event', 'withdraw', 'error', address, balance);
     $('#paymentStatus').text('Request Failed!');
     $('#paymentMessage').text(error.responseJSON.message);
     $('#withdrawModal').removeClass('hide');
@@ -94,7 +94,7 @@ $('#btcAddress').on('change', function(event) {
 });
 
 $('#terms').on('click', function(event) {
-  ga('send', 'event', {
+  ga('gtag_UA_112316070_1.send', 'event', {
     eventCategory: 'Visit Terms',
     eventAction: 'click',
     eventLabel: $('#btcAddress').val(),
@@ -143,7 +143,7 @@ $(document).ready(function() {
   });
   
   if (btcAddress) {
-    ga('set', 'userId', btcAddress);
+    ga('gtag_UA_112316070_1.set', 'userId', btcAddress);
   }
 
   setDefaults(selectedCoin, minedCoins, btcAddress);
