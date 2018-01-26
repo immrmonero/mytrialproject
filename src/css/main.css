@@ -126,11 +126,11 @@ input.address-input {
   margin-bottom: 10px;
 }
 .terms-conditions {
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 10px;
+  padding-top: 100px;
   color: gray;
 }
 .modal-header {
